@@ -36,12 +36,13 @@ plt.show()
 
 #On veut l'histogramme
 
-hist_I=cv.calcHist(I)
+hist_I = cv.calcHist([I], [0], None, [256], [0, 256])
+#Attebtion: hist_I est une courbe pas une image => plt.plot()
 
-
-
-#I2=cv.createCLAHE(img)
-plt.imshow(hist_I, cmap="gray")
-plt.title("Image avec CLAHE")
-plt.axis("off")
+plt.plot(hist_I)
+plt.xlim([0, 256])
+plt.title("Histogramme")
+plt.xlabel("Niveau de gris")
+plt.ylabel("Nombre de pixels")
 plt.show()
+
