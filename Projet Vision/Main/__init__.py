@@ -22,22 +22,15 @@ plt.axis("off")
 plt.show()
 """
 
-#On veut appliquer un filtre sur les images, pour faire des tests on prends la première image du dataset
-I = cv.imread(next(DATASET.glob("*.jpg")))
+I = cv.imread(str(next(DATASET.glob("*.jpg"))), cv.IMREAD_GRAYSCALE)
 
-plt.imshow(I , cmap="gray")
+plt.imshow(I, cmap="gray")
 plt.title("Image originale")
 plt.axis("off")
 plt.show()
 
-#On veut tester 2 choses, ameliorer le constrast et faire disparaître la texture des alvéoles
-
-#Améliorer le contraste
-
-#On veut l'histogramme
-
+# Histogramme (c'est une courbe, pas une image => plt.plot)
 hist_I = cv.calcHist([I], [0], None, [256], [0, 256])
-#Attebtion: hist_I est une courbe pas une image => plt.plot()
 
 plt.plot(hist_I)
 plt.xlim([0, 256])
@@ -45,4 +38,13 @@ plt.title("Histogramme")
 plt.xlabel("Niveau de gris")
 plt.ylabel("Nombre de pixels")
 plt.show()
+
+# CLAHE
+clahe = cv.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+I_CLAHE = clahe.apply(I)
+
+plt.subplot(1, 2, 1); plt.imshow(I, cmap="gray"); plt.title("Originale"); plt.axis("off")
+plt.subplot(1, 2, 2); plt.imshow(I_CLAHE, cmap="gray"); plt.title("CLAHE"); plt.axis("off")
+plt.show()
+
 
