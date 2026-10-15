@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 import cv2 as cv
 from pathlib import Path
 
-chemin_Armand = r"C:\Users\hueta\Downloads\Dataset\continuous_bee_dataset\images"
+#chemin_Armand = r"C:\Users\hueta\Downloads\Dataset\continuous_bee_dataset\images"
 #chemin_Adrian = r""
-#chemin_Gaspard = r""
+#chemin_Gaspard = r"C:\Users\destr\Downloads\Dataset\continuous_bee_dataset\images"
 
-DATASET = Path(chemin_Armand)
-#DATASET = Path(chemin_Adrian)
+#DATASET = Path(chemin_Armand)
+DATASET = Path(chemin_Adrian)
 #DATASET = Path(chemin_Gaspard)
 
 #Permet d'afficher une ligane
